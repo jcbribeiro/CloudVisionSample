@@ -271,10 +271,7 @@ public class MainActivity extends AppCompatActivity {
             // add the features we want
             // TODO: to add or remove features just (un)comment the blocks below
             annotateImageRequest.setFeatures(new ArrayList<Feature>() {{
-              Feature labelDetection = new Feature();
-              labelDetection.setType("LABEL_DETECTION");
-              labelDetection.setMaxResults(10);
-              add(labelDetection);
+
 
               Feature textDetection = new Feature();
               textDetection.setType("TEXT_DETECTION");
@@ -360,15 +357,7 @@ public class MainActivity extends AppCompatActivity {
     List<EntityAnnotation> annotations;
     AnnotateImageResponse annotateImageResponse = response.getResponses().get(0);
 
-    message += "\n___\n# LABELS\n";
-    annotations = annotateImageResponse.getLabelAnnotations();
-    if (annotations != null) {
-      for (EntityAnnotation annotation : annotations) {
-        message += String.format(Locale.US, "> %.3f: %s \n", annotation.getScore(), annotation.getDescription());
-      }
-    } else {
-      message += "nothing\n";
-    }
+
 
     message += "\n___\n# WEB DETECTION \n";
     WebDetection webDetection = annotateImageResponse.getWebDetection();
